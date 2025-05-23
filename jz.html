@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>✨ Para Jhon, mi amor eterno 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Reset y básicos */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Dancing Script', cursive, 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+      background: radial-gradient(ellipse at center, #2c003e 0%, #0b0018 100%);
+      color: #ffe6f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Importar fuente */
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+    /* Estrellas de fondo */
+    .star {
+      position: fixed;
+      background: radial-gradient(closest-side, #fff, transparent);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: floatUp 15s linear forwards, twinkle 4s infinite;
+      filter: drop-shadow(0 0 2px #fff);
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-800px) scale(1.3);
+        opacity: 0;
+      }
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Texto principal */
+    h1 {
+      font-size: 4.5vw;
+      color: #ff85c1;
+      text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff3399;
+      margin-bottom: 0.6rem;
+      user-select: none;
+    }
+
+    p {
+      font-size: 2.1vw;
+      line-height: 1.5;
+      max-width: 700px;
+      margin-bottom: 2rem;
+      color: #ffd6eb;
+      text-shadow: 0 0 5px #ff4da6;
+      user-select: none;
+    }
+
+    /* Botones */
+    button {
+      background: linear-gradient(135deg, #ff66cc 0%, #ff1a75 100%);
+      border: none;
+      border-radius: 40px;
+      padding: 1.1em 3em;
+      font-size: 2.6vw;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 25px #ff1a75;
+      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+      user-select: none;
+      margin: 0 1rem 2rem 1rem;
+      font-weight: 600;
+      text-shadow: 0 0 6px #fff;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #ff1a75 0%, #ff66cc 100%);
+      box-shadow: 0 0 35px #ff4da6;
+      transform: scale(1.05);
+    }
+    button:active {
+      transform: scale(0.95);
+    }
+
+    /* Mensaje secreto */
+    #frase {
+      max-width: 700px;
+      background: rgba(255, 102, 204, 0.9);
+      padding: 1.8rem 2rem;
+      border-radius: 25px;
+      font-size: 2.6vw;
+      color: #fff;
+      box-shadow: 0 0 40px #ff66cc;
+      margin: 0 auto 2rem;
+      user-select: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+    #frase.mostrar {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Corazones y flores flotantes */
+    .flotante {
+      position: fixed;
+      font-size: 1.5rem;
+      user-select: none;
+      pointer-events: none;
+      animation-name: flotarArriba;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+    @keyframes flotarArriba {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>💗 Hola mi amor, Jhon 🥰 💗</h1>
+
+  <p>
+    Hoy no es un día cualquiera, porque decidí escribirte esto 💌.<br><br>
+    Solo quería recordarte lo mucho que te amo 🥰.<br>
+    Eres mi alegría, mi paz, mi risa favorita y mi sueño más bonito 🌈.<br>
+    Estar contigo me hace sentir que todo es posible, y no cambiaría<br>
+    ni un segundo a tu lado por nada del mundo ❤️.<br><br>
+    Siempre voy a darte mi mejor versión,<br>
+    porque tú mereces lo más hermoso de mí 💕.<br>
+    Nunca olvides lo especial que eres para mí 👩‍❤️‍👨✨.<br><br>
+    Presiona el botoncito para escuchar un pedacito de mi corazón... ❤️🎶
+  </p>
+
+  <div>
+    <button id="btnMusica">🎵 Presiona, mi amorcito 💘</button>
+    <button id="btnFrase">💌 Ver frase sorpresa</button>
+  </div>
+
+  <div id="frase">“Tu amor es mi melodía favorita y mi lugar favorito para estar.” 💖</div>
+
+  <audio id="musica" src="pruebita.mp3" preload="auto"></audio>
+
+  <script>
+    // Función para reproducir/pausar música
+    const btnMusica = document.getElementById('btnMusica');
+    const musica = document.getElementById('musica');
+    btnMusica.addEventListener('click', () => {
+      if(musica.paused){
+        musica.play();
+        btnMusica.textContent = '⏸️ Pausar música';
+      } else {
+        musica.pause();
+        btnMusica.textContent = '🎵 Presiona, mi amorcito 💘';
+      }
+    });
+
+    // Mostrar la frase sorpresa con animación suave
+    const btnFrase = document.getElementById('btnFrase');
+    const frase = document.getElementById('frase');
+    btnFrase.addEventListener('click', () => {
+      frase.classList.toggle('mostrar');
+      btnFrase.textContent = frase.classList.contains('mostrar') ? '❌ Ocultar frase' : '💌 Ver frase sorpresa';
+    });
+
+    // Crear corazones y flores flotantes
+    const crearFlotante = (icono) => {
+      const elem = document.createElement('div');
+      elem.textContent = icono;
+      elem.classList.add('flotante');
+      elem.style.left = Math.random() * 100 + 'vw';
+      elem.style.top = 100 + Math.random() * 20 + 'vh';
+      elem.style.fontSize = (18 + Math.random() * 18) + 'px';
+      elem.style.animationDuration = (6 + Math.random() * 5) + 's';
+      document.body.appendChild(elem);
+      setTimeout(() => elem.remove(), 11000);
+    };
+
+    setInterval(() => crearFlotante('💖'), 400);
+    setInterval(() => crearFlotante('🌸'), 900);
+
+    // Crear estrellas de fondo
+    const crearEstrella = () => {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      const size = Math.random() * 3 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.animationDuration = (10 + Math.random() * 10) + 's';
+      star.style.animationDelay = (Math.random() * 15) + 's';
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 25000);
+    };
+    for(let i=0; i<50; i++) crearEstrella();
+    setInterval(crearEstrella, 2000);
+
+  </script>
+
+</body>
+</html>
